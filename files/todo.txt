@@ -1,0 +1,15 @@
+TODO:
+
+Aumentare lo spazio fra le locandine da 40px a 60px (e aumentare la dimensione delle locandine)
+
+Inserire il file logo.png nella cartella img
+
+Formattare l'header e il nav in modo che il testo sia allineato al sinistra, ma restando allineato con i film in basso
+
+Aggiungere uno sfondo bianco all'header e un'ombra come quella delle locandine
+
+Arrotondare gli angoli delle locandine
+
+IDEA:
+
+Sulla home, quando si passa il mouse su una locandina, la locandina si sposta verso l'alto e, da dietro la locandina, in basso, appare il titolo del film e il numero della sala in cui viene proiettato
