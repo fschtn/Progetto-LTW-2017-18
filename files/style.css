@@ -20,10 +20,6 @@ header {
 }
 
 header nav {
-    position: relative;
-    left: 50%;
-    width: 1200px;
-    margin-left: -600px;
     font-size: 0px; /* aggiunto per non mostrare il cursore di "selezione testo" fra i vari link */
     text-align: right;
 }
@@ -65,20 +61,22 @@ header nav a:nth-child(n+2):hover {
     color: #202020;
 }
 
-main {
+header nav, main {
     position: relative;
-    top: 20px;
-    left: 50%;
-    width: 1200px;
-    margin-left: -600px;
+    width: 72vw;
+    margin: 0 auto;
+}
+
+main {
     line-height: 0;
     font-size: 0;
+    text-align: center;
 }
 
 .locandina {
     position: relative;
-    width: 267px;
-    height: 381px;
+    width: 15vw;
+    height: 22.7vw;
     display: inline-block;
     margin: 0 40px 40px 0;
     background-position: center center;
@@ -87,14 +85,6 @@ main {
     background-color: #101010;
     border-radius: 5px;
 }
-
-.locandina:nth-child(4n) {
-    margin-right: 0px;
-}
-
-/*.locandina:nth-child(n+5){
-    margin-bottom: 0;
-}*/
 
 .locandina a {
     display: block;
@@ -119,4 +109,30 @@ main {
     position: absolute;
     bottom: 0px;
     right:0;
+}
+
+@media screen and (min-width:1000px) {
+    .locandina:nth-child(4n) {
+        margin-right: 0px;
+    }
+}
+
+@media screen and (min-width:700px) and (max-width:999px) {
+    .locandina:nth-child(3n) {
+        margin-right: 0px;
+    }
+    .locandina {
+        width: 20vw;
+        height: 31vw;
+    }
+}
+
+@media screen and (max-width:699px) {
+    .locandina:nth-child(2n) {
+        margin-right: 0px;
+    }
+    .locandina {
+        width: 31vw;
+        height: 44vw;
+    }
 }
