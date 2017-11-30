@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700');
+
+
+body {
+  margin : 50px;
+  background-color: rgba(0,0,0,0.2);
+  /*background: url(img/orange.jpg) no-repeat center center;*/
+  padding: 0px 0px 100px;
+  background-size: cover;
+}
+
+.pagina{
+  /*background-color: rgba(255,69,0,0.7);*/
+  background: url(img/orange.jpg)  no-repeat center center;
+  position: relative;
+  top : 20px;
+  left: 50%;
+  width: 1200px;
+  margin-left: -600px;
+}
+
+
+.trama{
+  display: inline-block;
+  height: 100px;
+  overflow: scroll;
+}
+
+.infomazioni{
+  position: absolute;
+  left:32%;
+  top: 0;
+  width: 70%;
+  height: 100;
+}
+
+.immagine{
+  position: relative;
+  margin: 0 0 0 0;
+  background-position: center center;
+  background-size: cover;
+  width: 30%;
+  height: 538px;
+  display: inline-block;
+}
+
+.titolo{
+  font-size: 34px;
+  text-transform: uppercase;
+  font-family: 'Impact' , sans-serif;
+  padding-top: 12px;
+}
+
+
+.genere{
+  font-size: 20px;
+  text-transform: lowercase;
+  font-family: "Palatino Linotype", serif;
+  color: rgba(0,0,0,0.7);
+  display: inline-block;
+}
+
+.valutazione{
+  position: absolute;
+  top: 23%;
+  left: 80%;
+  background-image: url(img/stella1.png);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+  width: 35px;
+  height: 28px;
+}
