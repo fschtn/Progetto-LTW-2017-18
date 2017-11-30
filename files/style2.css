@@ -73,7 +73,7 @@ body {
   background-repeat: repeat;
   background-position: left center;
   background-size: contain;
-  width: 142px;
+  width: 147px;
   height: 28px;
 }
 
@@ -82,7 +82,7 @@ body {
   background-image: url(img/stella1.png);
   background-repeat: repeat;
   background-size: contain;
-  width: 51%;
+  width: 71%;
   height: 28px;
 }
 
@@ -90,4 +90,17 @@ body {
 .prenotazione{
   position: relative;
   top:32px;
+}
+
+/*.return*/
+a {
+  position:absolute;
+  margin-top: 0px;
+  right: 0px;
+  background-image: url(img/cross.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 33px;
+  z-index: 100000;
 }
