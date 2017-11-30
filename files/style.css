@@ -132,6 +132,7 @@ main .locandina .info .sala {
     max-height: 70vh;
     font-size: 0;
     box-shadow: 3px 6px 18px rgba(0,0,0,0.5);
+    border-radius: 3px;
 }
 
 #informazioni {
@@ -156,7 +157,14 @@ main .locandina .info .sala {
     float: left;
     position: relative;
     top: -5vh;
+    left: 0;
     box-shadow: 2px 4px 8px rgba(0,0,0,0.7);
+    transition: top .6s ease;
+    border-radius: 4px;
+}
+
+#informazioni img:hover {
+    top: -6.5vh;
 }
 
 #informazioni .info {
@@ -179,8 +187,8 @@ main .locandina .info .sala {
 }
 
 #informazioni #trama {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 1.2rem;
+    line-height: 1.6;
     max-width: 0;
     max-height: 43vh;
     overflow-y: scroll;
@@ -193,6 +201,12 @@ main .locandina .info .sala {
     position: absolute;
     bottom: 20px;
     right: 20px
+}
+
+#informazioni .prenotazione input, #informazioni .prenotazione select, #informazioni .prenotazione option {
+    font-size: 16px;
+    margin-left: 15px;
+    padding: 5px;
 }
 
 
