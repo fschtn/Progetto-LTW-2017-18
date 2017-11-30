@@ -61,10 +61,18 @@ header nav a:nth-child(n+2):hover {
     color: #202020;
 }
 
+
+header nav, main, .popup {
+    width: 72vw;
+}
+
 header nav, main {
     position: relative;
-    width: 72vw;
     margin: 0 auto;
+}
+
+.popup {
+    margin-left: -36vw;
 }
 
 main {
@@ -73,7 +81,7 @@ main {
     text-align: center;
 }
 
-.locandina {
+main .locandina {
     position: relative;
     width: 15vw;
     height: 22.7vw;
@@ -86,7 +94,8 @@ main {
     border-radius: 5px;
 }
 
-.locandina a {
+
+main .locandina a {
     display: block;
     width: 100%;
     height: 100%;
@@ -96,7 +105,7 @@ main {
     left:0;
 }
 
-.locandina .info {
+main .locandina .info {
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -105,33 +114,130 @@ main {
     line-height: 1;
 }
 
-.locandina .info .sala {
+main .locandina .info .sala {
     position: absolute;
     bottom: 0px;
     right:0;
 }
 
+
+
+/********** PAGINA "INFORMAZIONI" **********/
+
+
+
+.popup {
+    background: url(img/orange.jpg) no-repeat center center;
+    position: fixed;
+    top: 15vh;
+    left: 50%;
+    max-height: 70vh;
+    font-size: 0;
+    box-shadow: 3px 6px 18px rgba(0,0,0,0.5);
+    border-radius: 3px;
+}
+
+#informazioni {
+    white-space: nowrap;
+}
+
+#informazioni > a {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 33px;
+    background-image: url(img/cross.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10000;
+}
+
+#informazioni img {
+    height: 80vh;
+    max-height: 80vh;
+    float: left;
+    position: relative;
+    top: -5vh;
+    left: 0;
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.7);
+    transition: top .6s ease;
+    border-radius: 4px;
+}
+
+#informazioni img:hover {
+    top: -6.5vh;
+}
+
+#informazioni .info {
+    display: inline-block;
+    padding: 30px 40px;
+    white-space: normal;
+}
+
+#informazioni h1 {
+    font-size: 34px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+#informazioni h2 {
+    font-size: 20px;
+    color: rgba(0,0,0,0.7);
+    margin: 10px 0 20px;
+}
+
+#informazioni #trama {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 0;
+    max-height: 43vh;
+    overflow-y: scroll;
+    display: inline-block;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+#informazioni .prenotazione {
+    position: absolute;
+    bottom: 20px;
+    right: 20px
+}
+
+#informazioni .prenotazione input, #informazioni .prenotazione select, #informazioni .prenotazione option {
+    font-size: 16px;
+    margin-left: 15px;
+    padding: 5px;
+}
+
+
+
+/********** MEDIA QUERIES PER ADATTAMENTO ALLO SCHERMO **********/
+
+
+
 @media screen and (min-width:1000px) {
-    .locandina:nth-child(4n) {
+    main .locandina:nth-child(4n) {
         margin-right: 0px;
     }
 }
 
 @media screen and (min-width:700px) and (max-width:999px) {
-    .locandina:nth-child(3n) {
+    main .locandina:nth-child(3n) {
         margin-right: 0px;
     }
-    .locandina {
+    main .locandina {
         width: 20vw;
         height: 31vw;
     }
 }
 
 @media screen and (max-width:699px) {
-    .locandina:nth-child(2n) {
+    main .locandina:nth-child(2n) {
         margin-right: 0px;
     }
-    .locandina {
+    main .locandina {
         width: 31vw;
         height: 44vw;
     }
