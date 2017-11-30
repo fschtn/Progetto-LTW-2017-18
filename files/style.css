@@ -61,6 +61,7 @@ header nav a:nth-child(n+2):hover {
     color: #202020;
 }
 
+
 header nav, main, .popup {
     width: 72vw;
 }
@@ -92,6 +93,7 @@ main .locandina {
     background-color: #101010;
     border-radius: 5px;
 }
+
 
 main .locandina a {
     display: block;
