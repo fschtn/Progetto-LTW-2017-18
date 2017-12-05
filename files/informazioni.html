@@ -35,6 +35,28 @@
                 h = h_popup-h_titolo-mt_titolo-mb_titolo-h_sottotitolo-mt_sottotitolo-mb_sottotitolo-i_paddingtop-i_paddingbottom-50;
                 $('#trama').css('max-height', h+"px");
             }
+
+            $(document).ready(function() {
+              $('#selectDay').change(function() {
+                attiva_prenotazione();
+              });
+
+              $('#selectHour').change(function() {
+                attiva_prenotazione();
+              });
+
+            });
+
+            function attiva_prenotazione(){
+              var giorno = $('#selectDay').val();
+              var ora = $('#selectHour').val();
+              if(giorno != null && ora!= null){
+                $('#invia').attr("disabled", false);
+              }
+            }
+
+
+
         </script>
     </head>
     <body>
@@ -76,7 +98,7 @@
                 </span>
             </div>
             <form class="prenotazione">
-                <select>
+                <select id="selectDay">
                     <option selected disabled>Scegli un giorno..</option>
                     <option value="051217">5 dicembre 2017</option>
                     <option value="061217">6 dicembre 2017</option>
@@ -86,7 +108,7 @@
                     <option value="101217">10 dicembre 2017</option>
                     <option value="111217">11 dicembre 2017</option>
                 </select>
-                <select>
+                <select id="selectHour">
                     <option selected disabled>Scegli un orario..</option>
                     <option value="16:00">16:00</option>
                     <option value="18:00">18:00</option>
@@ -94,7 +116,7 @@
                     <option value="22:00">22:00</option>
                     <option value="00:00">00:00</option>
                 </select>
-                <input type="submit" value="Prenota" disabled />
+                <input id="invia" type="submit" value="Prenota" disabled />
             </form>
         </div>
     </body>
