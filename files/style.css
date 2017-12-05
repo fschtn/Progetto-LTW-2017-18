@@ -242,3 +242,21 @@ main .locandina .info .sala {
         height: 44vw;
     }
 }
+
+
+
+/*---------------PAGINA POSTI--------------------*/
+
+iframe {
+  position: relative;
+  margin-left: 32%;
+  margin-top: 3%;
+  border: 0px;
+  vertical-align: bottom;
+  transform : rotateX(-60deg);
+}
+
+#posti {
+  perspective: 500px; 
+  -webkit-perspective: 500px;
+}
