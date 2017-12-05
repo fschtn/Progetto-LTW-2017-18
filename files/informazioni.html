@@ -5,7 +5,13 @@
         <link href="style.css" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script>
-            $('#informazioni').ready(function() {
+            $(document).ready(function() {
+                $('.prenotazione #hour').change(function() {
+                    attiva_prenotazione();
+                });
+                $('.prenotazione #day').change(function() {
+                    attiva_prenotazione();
+                });
                 setInterval(function() {
                     aggiorna_larghezza_massima();
                     aggiorna_altezza_massima();
@@ -21,42 +27,21 @@
             }
             function aggiorna_altezza_massima() {
                 h_popup = $('#informazioni').height();
-                t = $('#informazioni h1');
-                h_titolo = t.height();
-                mt_titolo = t.css('margin-top').substring(0,t.css('margin-top').length-2);
-                mb_titolo = t.css('margin-bottom').substring(0,t.css('margin-bottom').length-2);
-                s = $('#informazioni h2');
-                h_sottotitolo = s.height();
-                mt_sottotitolo = s.css('margin-top').substring(0,s.css('margin-top').length-2);
-                mb_sottotitolo = s.css('margin-bottom').substring(0,s.css('margin-bottom').length-2);
-                i = $('#informazioni .info');
-                i_paddingtop = i.css('padding-top').substring(0, i.css('padding-top').length-2);
-                i_paddingbottom = i.css('padding-bottom').substring(0, i.css('padding-bottom').length-2);
-                h = h_popup-h_titolo-mt_titolo-mb_titolo-h_sottotitolo-mt_sottotitolo-mb_sottotitolo-i_paddingtop-i_paddingbottom-50;
+                h = h_popup-60-50-$('#informazioni .info > span').height();
                 $('#trama').css('max-height', h+"px");
+                if($('#trama').height()+5 >= h) {
+                    $('#trama').css({'border-top': '1px solid rgba(0,0,0,0.2)', 'border-bottom': '1px solid rgba(0,0,0,0.2)'});
+                }else{
+                    $('#trama').css({'border-top': '0px', 'border-bottom': '0px'});
+                }
             }
-
-            $(document).ready(function() {
-              $('#selectDay').change(function() {
-                attiva_prenotazione();
-              });
-
-              $('#selectHour').change(function() {
-                attiva_prenotazione();
-              });
-
-            });
-
             function attiva_prenotazione(){
-              var giorno = $('#selectDay').val();
-              var ora = $('#selectHour').val();
-              if(giorno != null && ora!= null){
-                $('#invia').attr("disabled", false);
-              }
+                var giorno = $('.prenotazione #day').val();
+                var ora = $('.prenotazione #hour').val();
+                if(giorno != null && ora!= null){
+                    $('.prenotazione input[type="submit"]').removeAttr("disabled");
+                }
             }
-
-
-
         </script>
     </head>
     <body>
@@ -64,38 +49,20 @@
             <a href="index.html"></a>
             <img src="film/1/locandina.jpg" />
             <div class="info">
-                <h1>Thor Ragnarok</h1>
-                <h2>
-                    <span class="genere">Azione</span>
-                    <span class="durata">121'</span>
-                    <span class="valutazione">3.5</span>
-                </h2>
+                <span style="display: block;">
+                    <h1>Thor Ragnarok</h1>
+                    <h2>
+                        <span class="genere">Azione</span>
+                        <span class="durata">121'</span>
+                        <span class="valutazione">3.5</span>
+                    </h2>
+                </span>
                 <span id="trama">
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
                     Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
                 </span>
             </div>
             <form class="prenotazione">
-                <select id="selectDay">
+                <select id="day">
                     <option selected disabled>Scegli un giorno..</option>
                     <option value="051217">5 dicembre 2017</option>
                     <option value="061217">6 dicembre 2017</option>
@@ -105,7 +72,7 @@
                     <option value="101217">10 dicembre 2017</option>
                     <option value="111217">11 dicembre 2017</option>
                 </select>
-                <select id="selectHour">
+                <select id="hour">
                     <option selected disabled>Scegli un orario..</option>
                     <option value="16:00">16:00</option>
                     <option value="18:00">18:00</option>
@@ -113,7 +80,7 @@
                     <option value="22:00">22:00</option>
                     <option value="00:00">00:00</option>
                 </select>
-                <input id="invia" type="submit" value="Prenota" disabled />
+                <input type="submit" value="Prenota" disabled />
             </form>
         </div>
     </body>
