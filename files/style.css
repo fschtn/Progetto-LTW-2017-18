@@ -129,28 +129,34 @@ main .locandina .info .sala {
 .popup {
     background: url(img/orange.jpg) no-repeat center center;
     position: fixed;
-    top: 15vh;
+    top: 0vh;
     left: 50%;
-    max-height: 70vh;
+    height: 70vh;
     font-size: 0;
     box-shadow: 3px 6px 18px rgba(0,0,0,0.5);
     border-radius: 3px;
+    margin-top: 15vh;
+    margin-bottom: 15vh;
 }
 
-#informazioni {
-    white-space: nowrap;
-}
-
-#informazioni > a {
+.popup > .close {
     position: absolute;
     top: 10px;
     right: 10px;
     width: 32px;
     height: 33px;
-    background-image: url(img/cross.png);
+    background-image: url(img/dark_cross.png);
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 10000;
+}
+
+.popup > .close.light {
+    background-image: url(img/light_cross.png);
+}
+
+#informazioni {
+    white-space: nowrap;
 }
 
 #informazioni img {
@@ -213,7 +219,94 @@ main .locandina .info .sala {
 
 
 
+/*---------------PAGINA POSTI--------------------*/
+
+
+
+#posti {
+    position: absolute;
+    perspective: 900px;
+    -webkit-perspective: 900px;
+    background-image: url(img/pavement.jpg);
+    background-position: center center;
+    background-size: auto 40%;
+    background-repeat: repeat;
+    min-height: 70vh;
+    height: auto;
+    padding-bottom: 5vh;
+}
+
+#posti::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/ombra_light.png');
+    background-position: top center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#posti iframe {
+    width: 36vw;
+    height: 15vw;
+    position: relative;
+    top: -5vh;
+    left: 50%;
+    margin: 0 -18vw;
+    border: 0px;
+    vertical-align: bottom;
+    transform : rotateX(-60deg);
+    box-shadow: 0px 0px 100px rgba(255,255,255,0.35);
+    background: #101010;
+}
+
+#posti #sala {
+    border-spacing: 8px;
+    width: 80%;
+    min-width: 80%;
+    margin-left: 10%;
+}
+
+#posti td {
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+#posti td.chair_empty {
+    background-image: url(img/chair_empty.png);
+}
+
+#posti td.chair_empty:hover {
+    background-image: url(img/chair_tofill.png);
+}
+
+#posti td.chair_full {
+    background-image: url(img/chair_full.png);
+}
+
+#posti .chair_empty span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: pointer;
+}
+
+
+
+
 /********** MEDIA QUERIES PER ADATTAMENTO ALLO SCHERMO **********/
+
 
 
 
@@ -241,22 +334,4 @@ main .locandina .info .sala {
         width: 31vw;
         height: 44vw;
     }
-}
-
-
-
-/*---------------PAGINA POSTI--------------------*/
-
-iframe {
-  position: relative;
-  margin-left: 32%;
-  margin-top: 3%;
-  border: 0px;
-  vertical-align: bottom;
-  transform : rotateX(-60deg);
-}
-
-#posti {
-  perspective: 500px; 
-  -webkit-perspective: 500px;
 }

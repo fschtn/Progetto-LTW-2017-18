@@ -1,86 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title> Assegnazione Posti</title>
-  <link href="style.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-  <div class="popup" id="posti">
-    <a href="informazioni.html"></a>
-    <iframe  src="https://www.youtube.com/embed/D7UpZmPmwSo?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1" frameborder="0" allowfullscreen></iframe>
-    <table>
-      <tr>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-  </div>
-
-</body>
+    <head>
+        <title> Assegnazione Posti</title>
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <script src="jquery.js"></script>
+        <script>
+            alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L"];
+            $(document).ready(function() {
+                $.get("film/1/sala.txt", function(data) {
+                    file = data.split("\n");
+                    for(i=0;i<12;i++) {
+                        $("#sala").append("<tr>");
+                        fila = file[i];
+                        for(j=0;j<14;j++) {
+                            switch(fila[j]) {
+                                case "-":
+                                    posto = '';
+                                    break;
+                                case "o":
+                                    posto = ' class="chair_empty"';
+                                    break;
+                                case "x":
+                                    posto = ' class="chair_full"';
+                                    break;
+                            }
+                            $('#sala tr:nth-child('+(i+1)+')').append('<td id="'+alfabeto[i]+j+'" '+posto+'></td>');
+                        }
+                        $('#sala').append("</tr>");
+                    }
+                });
+                setTimeout(function() {
+                    $('#sala td').each(function() {
+                        $(this).html('<span></span>');
+                    });
+                    setTimeout(function() {
+                        $('#sala td span').bind("click", function() {
+                            alert("Aggiungere la funzione qui");
+                        });
+                    }, 300);
+                }, 300);
+            });
+        </script>
+    </head>
+    <body>
+        <div class="popup" id="posti">
+            <a href="informazioni.html" class="light close"></a>
+            <iframe  src="https://www.youtube.com/embed/D7UpZmPmwSo?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1" frameborder="0" allowfullscreen></iframe>
+            <table id="sala">
+            </table>
+        </div>
+    </body>
 </html>
