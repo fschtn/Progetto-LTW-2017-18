@@ -225,11 +225,11 @@ main .locandina .info .sala {
 
 #posti {
     position: absolute;
-    perspective: 900px;
-    -webkit-perspective: 900px;
+    perspective: 850px;
+    -webkit-perspective: 850px;
     background-image: url(img/pavement.jpg);
     background-position: center center;
-    background-size: auto 40%;
+    background-size: 25px auto;
     background-repeat: repeat;
     min-height: 70vh;
     height: auto;
@@ -258,7 +258,7 @@ main .locandina .info .sala {
     margin: 0 -18vw;
     border: 0px;
     vertical-align: bottom;
-    transform : rotateX(-60deg);
+    transform : rotateX(-65deg);
     box-shadow: 0px 0px 100px rgba(255,255,255,0.35);
     background: #101010;
 }
@@ -284,7 +284,7 @@ main .locandina .info .sala {
     background-image: url(img/chair_empty.png);
 }
 
-#posti td.chair_empty:hover {
+#posti td.chair_empty.selected, #posti td.chair_empty:hover {
     background-image: url(img/chair_tofill.png);
 }
 
@@ -300,6 +300,31 @@ main .locandina .info .sala {
     height: 100%;
     display: block;
     cursor: pointer;
+}
+
+#conferma_prenotazione {
+    color: #101010;
+    font-size: 1.4vw;
+    text-decoration: none;
+    background-color: #fff;
+    padding: 15px 30px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin: 0 -205px;
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    width: 350px;
+    text-align: center;
+    box-sizing: content-box;
+    border-radius: 50px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.5);
+    transition: all .4s ease;
+}
+
+#conferma_prenotazione.visibile {
+    top: 30px;
 }
 
 

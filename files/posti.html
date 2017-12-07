@@ -5,8 +5,28 @@
         <link href="style.css" rel="stylesheet" type="text/css">
         <script src="jquery.js"></script>
         <script>
-            alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L"];
+
+            // quando il documento è pronto, eseguo le funzioni importanti
             $(document).ready(function() {
+                crea_sala();
+
+                // aggiungo lo <span> a tutti i sedili non selezionati e, a questi <span>, la funzione per occupare o meno un posto
+                setTimeout(function() {
+                    $('#sala td.chair_empty').each(function() {
+                        $(this).html('<span></span>');
+                    });
+                    setTimeout(function() {
+                        $('#sala td span').bind("click", function() {
+                            $(this).parent().toggleClass("selected");
+                        });
+                    }, 300);
+                }, 300);
+                toggle_acquista();
+            });
+
+            // funzione che crea la <table> che rappresenta la sala in base al contenuto del file txt corrispondente
+            function crea_sala() {
+                alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L"];
                 $.get("film/1/sala.txt", function(data) {
                     file = data.split("\n");
                     for(i=0;i<12;i++) {
@@ -29,25 +49,27 @@
                         $('#sala').append("</tr>");
                     }
                 });
-                setTimeout(function() {
-                    $('#sala td').each(function() {
-                        $(this).html('<span></span>');
-                    });
-                    setTimeout(function() {
-                        $('#sala td span').bind("click", function() {
-                            alert("Aggiungere la funzione qui");
-                        });
-                    }, 300);
-                }, 300);
-            });
+            }
+
+            // funzione che controlla se abilitare o meno il tasto "acquista"
+            function toggle_acquista() {
+                setInterval(function() {
+                    if($('#sala td.selected').length > 0) {
+                        $('#conferma_prenotazione').addClass("visibile");
+                    }else{
+                        $('#conferma_prenotazione').removeClass("visibile");
+                    }
+                }, 10);
+            }
+
         </script>
     </head>
     <body>
         <div class="popup" id="posti">
             <a href="informazioni.html" class="light close"></a>
-            <iframe  src="https://www.youtube.com/embed/D7UpZmPmwSo?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1" frameborder="0" allowfullscreen></iframe>
-            <table id="sala">
-            </table>
+            <iframe  src="https://www.youtube.com/embed/D7UpZmPmwSo?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;loop=1"></iframe>
+            <table id="sala"></table>
         </div>
+        <a href="" id="conferma_prenotazione">Conferma prenotazione</a>
     </body>
 </html>
