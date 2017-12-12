@@ -26,13 +26,13 @@
 
             // funzione che crea la <table> che rappresenta la sala in base al contenuto del file txt corrispondente
             function crea_sala() {
-                alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L"];
+                alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
                 $.get("film/1/sala.txt", function(data) {
                     file = data.split("\n");
-                    for(i=0;i<12;i++) {
+                    for(i=0;i<file.length-1;i++) {
                         $("#sala").append("<tr>");
                         fila = file[i];
-                        for(j=0;j<14;j++) {
+                        for(j=0;j<fila.length;j++) {
                             switch(fila[j]) {
                                 case "-":
                                     posto = '';
