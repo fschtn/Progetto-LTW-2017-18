@@ -61,9 +61,12 @@ header nav a:nth-child(n+2):hover {
     color: #202020;
 }
 
-
 header nav, main, .popup {
     width: 72vw;
+}
+
+.popup.small {
+    width: 36vw;
 }
 
 header nav, main {
@@ -73,6 +76,10 @@ header nav, main {
 
 .popup {
     margin-left: -36vw;
+}
+
+.popup.small {
+    margin-left: -18vw;
 }
 
 main {
