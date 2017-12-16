@@ -20,7 +20,7 @@ header {
 }
 
 header nav {
-    font-size: 0px; /* aggiunto per non mostrare il cursore di "selezione testo" fra i vari link */
+    font-size: 0px;
     text-align: right;
 }
 
@@ -66,7 +66,8 @@ header nav, main, .popup {
 }
 
 .popup.small {
-    width: 36vw;
+    width: 400px;
+    margin-left: -200px;
 }
 
 header nav, main {
@@ -76,10 +77,6 @@ header nav, main {
 
 .popup {
     margin-left: -36vw;
-}
-
-.popup.small {
-    margin-left: -18vw;
 }
 
 main {
@@ -125,6 +122,27 @@ main .locandina .info .sala {
     position: absolute;
     bottom: 0px;
     right:0;
+}
+
+.button {
+    text-decoration: none;
+    color: #fff;
+    background: #202020;
+    padding: 7px 25px;
+    border-radius: 10px;
+    margin: 0 4px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.button.confirm {
+    background: #2212d2;
+}
+
+.button.deny {
+    background: #c32727;
 }
 
 
@@ -337,6 +355,73 @@ main .locandina .info .sala {
 
 
 
+/***************pagina riepilogo*********************************/
+
+
+
+
+#riepilogo .copertina{
+    background-position: center center;
+    width : 100%;
+    height: 20vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#riepilogo h1{
+    font-size: 28px;
+    line-height: 1;
+    padding: 0 20px;
+}
+
+#riepilogo span{
+    font-size: 18px;
+    padding: 0 20px;
+    display: inline-block;
+    line-height: 1.5;
+}
+
+#riepilogo table {
+    width: 90%;
+    margin: 16px 5%;
+    padding: 13px 0 13px 13px;
+    border-spacing: 0;
+    border: 2px solid #000;
+    border-left: 0;
+    border-right: 0;
+}
+
+#riepilogo table td {
+    font-size: 18px;
+    padding: 5px 0;
+}
+
+#riepilogo table td:last-child {
+    text-align: center;
+}
+
+#riepilogo table td:first-child {
+    font-size: 16px;
+}
+
+#riepilogo table tr:last-child td:last-child {
+    font-weight: bold;
+}
+
+#riepilogo .conferma {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0 0 15px;
+    font-size: 0;
+}
+
+
+
+
+
 /********** MEDIA QUERIES PER ADATTAMENTO ALLO SCHERMO **********/
 
 
@@ -366,79 +451,4 @@ main .locandina .info .sala {
         width: 31vw;
         height: 44vw;
     }
-}
-
-
-/***************pagina riepilogo*********************************/
-
-.popup_small{
-    background: url(img/orange.jpg) no-repeat center center;
-    position: fixed;
-    top: 0vh;
-    left: 54%;
-    height: 74vh;
-    width : 28%;
-    font-size: 0;
-    box-shadow: 3px 6px 18px rgba(0,0,0,0.5);
-    border-radius: 3px;
-    margin-top: 15vh;
-    margin-bottom: 15vh;
-    margin-left: -18vw;
-}
-
-.copertina{
-  position : absolute;
-  background-position: center center;
-  width : 100%;
-  height: 25%;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-
-.popup_small > .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 24px;
-    height: 33px;
-    background-image: url(img/dark_cross.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    z-index: 10000;
-}
-
-.popup_small > .close.light {
-    background-image: url(img/light_cross.png);
-}
-
-
-.dati {
-    position: absolute;
-    width: 219px;
-    height: 161px;
-    margin-top: 22vh;
-    display: block;
-    margin-left: 33px;
-}
-
-#riepilogo h1{
-    font-size: 23px;
-    line-height: 1;
-}
-
-
-#riepilogo h2{
-    font-size: 18px;
-    line-height: 1;
-    display: inline-block;
-    margin-left: 3vh;
-    padding:4vh;
-}
-
-
-.conclusione {
-    position:absolute;
-    margin-top:65vh;
-    margin-left:30vh;
 }
