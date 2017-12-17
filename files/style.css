@@ -20,7 +20,7 @@ header {
 }
 
 header nav {
-    font-size: 0px; /* aggiunto per non mostrare il cursore di "selezione testo" fra i vari link */
+    font-size: 0px;
     text-align: right;
 }
 
@@ -66,7 +66,8 @@ header nav, main, .popup {
 }
 
 .popup.small {
-    width: 36vw;
+    width: 400px;
+    margin-left: -200px;
 }
 
 header nav, main {
@@ -76,10 +77,6 @@ header nav, main {
 
 .popup {
     margin-left: -36vw;
-}
-
-.popup.small {
-    margin-left: -18vw;
 }
 
 main {
@@ -125,6 +122,27 @@ main .locandina .info .sala {
     position: absolute;
     bottom: 0px;
     right:0;
+}
+
+.button {
+    text-decoration: none;
+    color: #fff;
+    background: #202020;
+    padding: 7px 25px;
+    border-radius: 10px;
+    margin: 0 4px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.button.confirm {
+    background: #2212d2;
+}
+
+.button.deny {
+    background: #c32727;
 }
 
 
@@ -333,6 +351,73 @@ main .locandina .info .sala {
 #conferma_prenotazione.visibile {
     top: 30px;
 }
+
+
+
+
+/***************pagina riepilogo*********************************/
+
+
+
+
+#riepilogo .copertina{
+    background-position: center center;
+    width : 100%;
+    height: 20vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#riepilogo h1{
+    font-size: 28px;
+    line-height: 1;
+    padding: 0 20px;
+}
+
+#riepilogo span{
+    font-size: 18px;
+    padding: 0 20px;
+    display: inline-block;
+    line-height: 1.5;
+}
+
+#riepilogo table {
+    width: 90%;
+    margin: 16px 5%;
+    padding: 13px 0 13px 13px;
+    border-spacing: 0;
+    border: 2px solid #000;
+    border-left: 0;
+    border-right: 0;
+}
+
+#riepilogo table td {
+    font-size: 18px;
+    padding: 5px 0;
+}
+
+#riepilogo table td:last-child {
+    text-align: center;
+}
+
+#riepilogo table td:first-child {
+    font-size: 16px;
+}
+
+#riepilogo table tr:last-child td:last-child {
+    font-weight: bold;
+}
+
+#riepilogo .conferma {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0 0 15px;
+    font-size: 0;
+}
+
 
 
 

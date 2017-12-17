@@ -1,25 +1,46 @@
 <!DOCTYPE html>
 <head>
-  <title> Riepilogo </title>
-  <link href="style.css" rel="stylesheet" type="text/css">
+    <title> Riepilogo </title>
+    <meta charset="utf-8" />
+    <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <div class="popup" id="riepilogo">
-    <a href="index.html" ></a>
-    <img src="film/1/locandina.jpg" />
-    <div class="dati">
-      <h1> Titolo Film</h1>
-      <h2>
-        <span>Giorno scelto</span>
-        <span>Orario scelto</span>
-        <span>Posto scelto</span>
-      </h2>
+    <div class="popup small" id="riepilogo">
+        <a href="posti.html" class="light close" ></a>
+        <div class="copertina" style="background-image:url(film/1/Promo.jpg);"></div>
+        <h1>Thor: Ragnarok</h1>
+        <span>
+            Confermi di voler acquistare 4 biglietti per lo spettacolo di "Thor: Ragnarok" del 18 dicembre 2017 alle ore 20:00?
+        </span>
+        <table>
+            <tr>
+                <td>
+                    Prezzo biglietto singolo
+                </td>
+                <td>
+                    6.00€
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Num. biglietti
+                </td>
+                <td>
+                    x4
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Totale
+                </td>
+                <td>
+                    24.00€
+                </td>
+            </tr>
+        </table>
+        <span class="conferma">
+            <a href="" class="button confirm">Conferma</a>
+            <a href="" class="button deny">Annulla</a>
+        </span>
     </div>
-    <div class="conclusione">
-      <form class="conferma">
-        <input id="prenota" type="submit" value="Prenota" />
-        <input id="cancella" type="reset" value="Cancella" />
-      </form>
-    </div>
-  </div>
 </body>
