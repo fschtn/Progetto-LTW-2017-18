@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Cinema</title>
+        <title>Selezione posti</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
         <script src="jquery.js"></script>
         <script src="script.js"></script>
@@ -14,12 +14,13 @@
                     $('#sala td.chair_empty').each(function() {
                         $(this).html('<span></span>');
                     });
+                    if(localStorage.prenotazione != null) seleziona_posti();
                     setTimeout(function() {
                         $('#sala td span').bind("click", function() {
                             $(this).parent().toggleClass("selected");
                         });
-                    }, 300);
-                }, 300);
+                    }, 100);
+                }, 100);
                 toggle_acquista();
             });
 
@@ -50,6 +51,17 @@
             }
 
             function toggle_acquista() {
+                $('#conferma_prenotazione').bind("click", function() {
+                    $('#conferma_prenotazione').removeClass("visibile");
+                    var prenotazione = new Array();
+                    $('td.selected').each(function(e) {
+                        prenotazione.push($(this).attr("id"));
+                    });
+                    $('td.selected').removeClass("selected");
+                    localStorage.prenotazione = JSON.stringify(prenotazione);
+                    chiudi_popup();
+                    apri('riepilogo', 410);
+                });
                 setInterval(function() {
                     if($('#sala td.selected').length > 0) {
                         $('#conferma_prenotazione').addClass("visibile");
@@ -64,6 +76,15 @@
                     $('iframe').attr("src", "https://www.youtube.com/embed/"+response+"?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;loop=1");
                 });
             }
+
+            function seleziona_posti() {
+                prenotazioni = localStorage.prenotazione;
+                prenota = JSON.parse(prenotazioni);
+                for(e in prenota) {
+                    // console.log(prenota[e]);
+                    $('#'+prenota[e]).addClass("selected");
+                }
+            }
         </script>
     </head>
     <body>
@@ -72,6 +93,6 @@
             <iframe ></iframe>
             <table id="sala"></table>
         </div>
-        <a href="riepilogo.html" id="conferma_prenotazione">Conferma prenotazione</a>
+        <a id="conferma_prenotazione">Conferma prenotazione</a>
     </body>
 </html>

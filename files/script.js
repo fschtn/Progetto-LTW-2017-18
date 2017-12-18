@@ -18,6 +18,9 @@ function crea_overlay() {
     setTimeout(function(){
         $('.overlay').css("background-color", "rgba(0,0,0,0.7)");
     },10);
+    localStorage.ora = null;
+    localStorage.giorno = null;
+    localStorage.prenotazione = null;
 }
 
 function titolo(id) {
