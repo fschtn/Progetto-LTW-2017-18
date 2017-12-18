@@ -3,7 +3,18 @@
     <head>
         <title>Cinema</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="jquery.js"></script>
+        <script src="script.js"></script>
+        <script>
+            $(document).ready(function() {
+                for(i=1; i<=8; i++){
+                    $('main').append('<div class="locandina" id="locandina'+i+'"></div>');
+                    $('#locandina'+i).css("background-image", "url(film/"+i+"/locandina.jpg)");
+                    $('#locandina'+i).html("<a></a>");
+                    $('#locandina'+i+' a').attr("onclick", "apri_info("+i+");");
+                }
+            });
+        </script>
     </head>
     <body>
         <header>
@@ -14,63 +25,6 @@
                 <a href="contatti.html" class="sala">Contatti</a>
             </nav>
         </header>
-        <main>
-            <div class="locandina" style="background-image: url(film/1/locandina.jpg);">
-                <div class="info">
-                    <span class="titolo">Titolo del film</span>
-                    <span class="sala">1</span>
-                </div>
-                <a href="informazioni.html"></a>
-            </div>
-            <div class="locandina" style="background-image: url(film/2/locandina.jpg);">
-                <div class="info">
-                    <span class="titolo">Titolo del film</span>
-                    <span class="sala">1</span>
-                </div>
-                <a href="#"></a>
-            </div>
-            <div class="locandina" style="background-image: url(film/3/locandina.jpg);">
-                <div class="info">
-                    <span class="titolo">Titolo del film</span>
-                    <span class="sala">1</span>
-                </div>
-                <a href="#"></a>
-            </div>
-            <div class="locandina" style="background-image: url(film/4/locandina.jpg);">
-                <div class="info">
-                    <span class="titolo">Titolo del film</span>
-                    <span class="sala">1</span>
-                </div>
-                <a href="#"></a>
-            </div>
-            <div class="locandina" style="background-image: url(film/5/locandina.jpg);">
-                <div class="info">
-                    <span class="titolo">Titolo del film</span>
-                    <span class="sala">1</span>
-                </div>
-                <a href="#"></a>
-            </div>
-            <div class="locandina" style="background-image: url(film/6/locandina.jpg);">
-                <div class="info">
-                    <span class="titolo">Titolo del film</span>
-                    <span class="sala">1</span>
-                </div>
-                <a href="#"></a>
-            </div>
-            <div class="locandina" style="background-image: url(film/7/locandina.jpg);">
-                <div class="info">
-                    <span class="titolo">Titolo del film</span>
-                    <span class="sala">1</span>
-                </div>
-                <a href="#"></a>
-            </div>
-            <div class="locandina" style="background-image: url(film/8/locandina.jpg);">
-                <div class="info">
-                    <span class="titolo">Titolo del film</span>
-                    <span class="sala">1</span>
-                </div>
-                <a href="#"></a>
-            </div>
-        </main>
+        <main></main>
     </body>
 </html>

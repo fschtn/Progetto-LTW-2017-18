@@ -1,0 +1,12 @@
+---oooooooo---
+---ooxxxooo---
+---oooooooo---
+--oooooooooo--
+--ooxxxxoooo--
+--oooooxxooo--
+--oooooooooo--
+-ooooxxxxoooo-
+-ooxxxoooxxoo-
+-oooooooooooo-
+-ooooooxxxxoo-
+-ooooxxoooooo-

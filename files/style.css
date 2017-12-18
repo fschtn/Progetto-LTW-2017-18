@@ -102,23 +102,9 @@ main .locandina a {
     height: 100%;
     background-color: rgba(150,200,80,0);
     position: absolute;
+    cursor: pointer;
     top:0;
     left:0;
-}
-
-main .locandina .info {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    height: 40px;
-    line-height: 1;
-}
-
-main .locandina .info .sala {
-    position: absolute;
-    bottom: 0px;
-    right:0;
 }
 
 .button {
@@ -141,13 +127,6 @@ main .locandina .info .sala {
 .button.deny {
     background: #c32727;
 }
-
-
-
-/********** PAGINA "INFORMAZIONI" **********/
-
-
-
 .popup {
     background: url(img/orange.jpg) no-repeat center center;
     position: fixed;
@@ -159,6 +138,9 @@ main .locandina .info .sala {
     border-radius: 3px;
     margin-top: 15vh;
     margin-bottom: 15vh;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity .3s ease;
 }
 
 .popup > .close {
@@ -177,6 +159,24 @@ main .locandina .info .sala {
     background-image: url(img/light_cross.png);
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: rgba(0,0,0,0.0);
+    transition: all .3s ease;
+}
+
+
+
+/********** PAGINA "INFORMAZIONI" **********/
+
+
+
+
 #informazioni {
     white-space: nowrap;
 }
@@ -189,12 +189,7 @@ main .locandina .info .sala {
     top: -5vh;
     left: 0;
     box-shadow: 2px 4px 8px rgba(0,0,0,0.7);
-    transition: top .6s ease;
     border-radius: 4px;
-}
-
-#informazioni img:hover {
-    top: -6.5vh;
 }
 
 #informazioni .info {
@@ -234,6 +229,10 @@ main .locandina .info .sala {
 
 #informazioni h2 .durata::before {
     background-image: url('img/clock.svg');
+}
+
+#informazioni h2 .durata::after {
+    content: "'";
 }
 
 #informazioni h2 .valutazione::before {
