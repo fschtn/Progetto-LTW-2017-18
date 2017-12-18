@@ -63,6 +63,7 @@ header nav a:nth-child(n+2):hover {
 
 header nav, main, .popup {
     width: 72vw;
+    margin-left: -36vw;
 }
 
 .popup.small {
@@ -73,10 +74,6 @@ header nav, main, .popup {
 header nav, main {
     position: relative;
     margin: 0 auto;
-}
-
-.popup {
-    margin-left: -36vw;
 }
 
 main {
@@ -217,6 +214,30 @@ main .locandina .info .sala {
     font-size: 20px;
     color: rgba(0,0,0,0.7);
     margin: 10px 0 20px;
+}
+
+#informazioni h2 .genere::before, #informazioni h2 .durata::before, #informazioni h2 .valutazione::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 6px 0 30px;
+}
+
+#informazioni h2 .genere::before {
+    background-image: url('img/film.svg');
+    margin-left: 0;
+}
+
+#informazioni h2 .durata::before {
+    background-image: url('img/clock.svg');
+}
+
+#informazioni h2 .valutazione::before {
+    background-image: url('img/star.svg');
 }
 
 #informazioni #trama {
