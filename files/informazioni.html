@@ -1,87 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cinema</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <script src="jquery.js"></script>
+        <script src="script.js"></script>
+        <script>
+            $(document).ready(function() {
+                mostra_popup();
+                id = localStorage.film != null ? localStorage.film : 1;
+                $('#informazioni > img').attr("src", "film/"+id+"/locandina.jpg");
+                $('#informazioni .info h1').load("film/"+id+"/titolo.txt");
+                $('#informazioni .info h2 .genere').load("film/"+id+"/genere.txt");
+                $('#informazioni .info h2 .durata').load("film/"+id+"/durata.txt");
+                $('#informazioni .info h2 .valutazione').load("film/"+id+"/valutazione.txt");
+                $('#informazioni .info #trama').load("film/"+id+"/trama.txt");
+                $('.prenotazione #hour').change(function() {
+                    attiva_prenotazione();
+                });
+                $('.prenotazione #day').change(function() {
+                    attiva_prenotazione();
+                });
+                setInterval(function() {
+                    if($('#informazioni').length) {
+                        aggiorna_larghezza_massima();
+                        aggiorna_altezza_massima();
+                    }
+                }, 50);
+                genera_date();
+            });
 
-<script>
-    $(document).ready(function() {
-        setTimeout(function(){
-            $('.popup').css("opacity", "1");
-        },100);
-        $('.prenotazione #hour').change(function() {
-            attiva_prenotazione();
-        });
-        $('.prenotazione #day').change(function() {
-            attiva_prenotazione();
-        });
-        setInterval(function() {
-            if($('#informazioni').length) {
-                aggiorna_larghezza_massima();
-                aggiorna_altezza_massima();
+            function aggiorna_larghezza_massima() {
+                w_popup = $('#informazioni').width();
+                w_img = $('#informazioni > img').width();
+                p_info = $('#informazioni .info').css('padding-left');
+                p_info = p_info.substring(0,p_info.length-2);
+                w = w_popup-w_img-(p_info*2);
+                $('#trama').css('max-width', w+'px');
             }
-        }, 50);
-        genera_date();
-    });
 
-    function aggiorna_larghezza_massima() {
-        w_popup = $('#informazioni').width();
-        w_img = $('#informazioni > img').width();
-        p_info = $('#informazioni .info').css('padding-left');
-        p_info = p_info.substring(0,p_info.length-2);
-        w = w_popup-w_img-(p_info*2);
-        $('#trama').css('max-width', w+'px');
-    }
+            function aggiorna_altezza_massima() {
+                h_popup = $('#informazioni').height();
+                h = h_popup-60-50-$('#informazioni .info > span').height();
+                $('#trama').css('max-height', h+"px");
+                if($('#trama').height()+5 >= h) {
+                    $('#trama').css({'border-top': '1px solid rgba(0,0,0,0.2)', 'border-bottom': '1px solid rgba(0,0,0,0.2)'});
+                }else{
+                    $('#trama').css({'border-top': '0px', 'border-bottom': '0px'});
+                }
+            }
 
-    function aggiorna_altezza_massima() {
-        h_popup = $('#informazioni').height();
-        h = h_popup-60-50-$('#informazioni .info > span').height();
-        $('#trama').css('max-height', h+"px");
-        if($('#trama').height()+5 >= h) {
-            $('#trama').css({'border-top': '1px solid rgba(0,0,0,0.2)', 'border-bottom': '1px solid rgba(0,0,0,0.2)'});
-        }else{
-            $('#trama').css({'border-top': '0px', 'border-bottom': '0px'});
-        }
-    }
+            function attiva_prenotazione(){
+                var giorno = $('.prenotazione #day').val();
+                var ora = $('.prenotazione #hour').val();
+                if(giorno != null && ora!= null){
+                    $('.prenotazione input[type="submit"]').removeAttr("disabled");
+                }
+            }
 
-    function attiva_prenotazione(){
-        var giorno = $('.prenotazione #day').val();
-        var ora = $('.prenotazione #hour').val();
-        if(giorno != null && ora!= null){
-            $('.prenotazione input[type="submit"]').removeAttr("disabled");
-        }
-    }
+            function genera_date() {
+                mese = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+                d = new Date();
+                for(i=0;i<7;i++) {
+                    d = new Date(d.getTime()+1000*60*60*24);
+                    g = d.getDate();
+                    m = d.getMonth();
+                    a = d.getFullYear();
+                    $('#informazioni form #day').append('<option value="'+a+''+(m+1)+''+g+'">'+g+' '+mese[m]+' '+a+'</option>');
+                }
+            }
 
-    function genera_date() {
-        mese = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
-        d = new Date();
-        for(i=0;i<7;i++) {
-            d = new Date(d.getTime()+1000*60*60*24);
-            $('#informazioni form #day').append('<option value="">'+d.getDate()+' '+mese[d.getMonth()]+' '+d.getFullYear()+'</option>');
-        }
-    }
-</script>
-<div class="popup" id="informazioni">
-    <a href="javascript:chiudi_info(1);" class="close"></a>
-    <img src="film/1/locandina.jpg" />
-    <div class="info">
-        <span style="display: block;">
-            <h1></h1>
-            <h2>
-                <span class="genere"></span>
-                <span class="durata"></span>
-                <span class="valutazione"></span>
-            </h2>
-        </span>
-        <span id="trama"></span>
-    </div>
-    <form action="posti.html" class="prenotazione">
-        <select id="day">
-            <option selected disabled>Scegli un giorno..</option>
-        </select>
-        <select id="hour">
-            <option selected disabled>Scegli un orario..</option>
-            <option>16:30</option>
-            <option>18:30</option>
-            <option>20:30</option>
-            <option>22:30</option>
-            <option>00:30</option>
-        </select>
-        <input type="submit" value="Prenota" disabled />
-    </form>
-</div>
+            function prenota() {
+                localStorage.giorno = $('#day').val();
+                localStorage.ora = $('#hour').val();
+                chiudi_popup();
+                setTimeout(function() {
+                    apri('posti');
+                }, 410);
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="popup" id="informazioni">
+            <a href="javascript:chiudi_popup(1);" class="close"></a>
+            <img src="" />
+            <div class="info">
+                <span style="display: block;">
+                    <h1></h1>
+                    <h2>
+                        <span class="genere"></span>
+                        <span class="durata"></span>
+                        <span class="valutazione"></span>
+                    </h2>
+                </span>
+                <span id="trama"></span>
+            </div>
+            <form class="prenotazione" onsubmit="return prenota();">
+                <select id="day">
+                    <option selected disabled>Scegli un giorno..</option>
+                </select>
+                <select id="hour">
+                    <option selected disabled>Scegli un orario..</option>
+                    <option>16:30</option>
+                    <option>18:30</option>
+                    <option>20:30</option>
+                    <option>22:30</option>
+                    <option>00:30</option>
+                </select>
+                <input type="submit" value="Prenota" disabled />
+            </form>
+        </div>
+    </body>
+</html>

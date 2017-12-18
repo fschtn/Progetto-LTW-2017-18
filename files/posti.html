@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Assegnazione Posti</title>
-        <meta charset="utf-8" />
-        <link href="style.css" rel="stylesheet" type="text/css">
+        <title>Cinema</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
         <script src="jquery.js"></script>
         <script src="script.js"></script>
         <script>
-
-            // quando il documento è pronto, eseguo le funzioni importanti
             $(document).ready(function() {
+                mostra_popup();
+                crea_trailer();
                 crea_sala();
-
-                // aggiungo lo <span> a tutti i sedili non selezionati e, a questi <span>, la funzione per occupare o meno un posto
                 setTimeout(function() {
                     $('#sala td.chair_empty').each(function() {
                         $(this).html('<span></span>');
@@ -26,10 +23,9 @@
                 toggle_acquista();
             });
 
-            // funzione che crea la <table> che rappresenta la sala in base al contenuto del file txt corrispondente
             function crea_sala() {
                 alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-                $.get("film/1/sala.txt", function(data) {
+                $.get("film/"+localStorage.film+"/sala.txt", function(data) {
                     file = data.split("\n");
                     for(i=0;i<file.length-1;i++) {
                         $("#sala").append("<tr>");
@@ -53,7 +49,6 @@
                 });
             }
 
-            // funzione che controlla se abilitare o meno il tasto "acquista"
             function toggle_acquista() {
                 setInterval(function() {
                     if($('#sala td.selected').length > 0) {
@@ -64,12 +59,17 @@
                 }, 10);
             }
 
+            function crea_trailer() {
+                $.get("film/"+localStorage.film+"/trailer.txt", function(response) {
+                    $('iframe').attr("src", "https://www.youtube.com/embed/"+response+"?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;loop=1");
+                });
+            }
         </script>
     </head>
     <body>
         <div class="popup" id="posti">
-            <a href="informazioni.html" class="light close"></a>
-            <iframe  src="https://www.youtube.com/embed/D7UpZmPmwSo?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;loop=1"></iframe>
+            <a href="javascript:chiudi_popup();apri('informazioni',400);" class="light close"></a>
+            <iframe ></iframe>
             <table id="sala"></table>
         </div>
         <a href="riepilogo.html" id="conferma_prenotazione">Conferma prenotazione</a>

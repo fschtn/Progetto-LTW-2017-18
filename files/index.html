@@ -11,7 +11,7 @@
                     $('main').append('<div class="locandina" id="locandina'+i+'"></div>');
                     $('#locandina'+i).css("background-image", "url(film/"+i+"/locandina.jpg)");
                     $('#locandina'+i).html("<a></a>");
-                    $('#locandina'+i+' a').attr("onclick", "apri_info("+i+");");
+                    $('#locandina'+i+' a').attr("onclick", "localStorage.film="+i+"; crea_overlay(); apri('informazioni');");
                 }
             });
         </script>

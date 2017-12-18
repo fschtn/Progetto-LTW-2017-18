@@ -1,18 +1,19 @@
-function apri_info(id) {
-    $.get("informazioni.html", function(data){
-        crea_overlay();
-        $('body').css('overflow','hidden');
-        $('.overlay').append(data);
-        $('#informazioni > img').attr("src", "film/"+id+"/locandina.jpg");
-        $('#informazioni .info h1').load("film/"+id+"/titolo.txt");
-        $('#informazioni .info h2 .genere').load("film/"+id+"/genere.txt");
-        $('#informazioni .info h2 .durata').load("film/"+id+"/durata.txt");
-        $('#informazioni .info h2 .valutazione').load("film/"+id+"/valutazione.txt");
-        $('#informazioni .info #trama').load("film/"+id+"/trama.txt");
+function mostra_popup() {
+    setTimeout(function(){
+        $('.popup').css("opacity", "1");
+    },100);
+}
+
+function apri(pagina, timeout=1) {
+    $.get(pagina+".html", function(data){
+        setTimeout(function() {
+            $('.overlay').append(data);
+        }, timeout);
     });
 }
 
 function crea_overlay() {
+    $('body').css('overflow','hidden');
     $('body').append('<div class="overlay"></div>');
     setTimeout(function(){
         $('.overlay').css("background-color", "rgba(0,0,0,0.7)");
@@ -25,7 +26,7 @@ function titolo(id) {
     });
 }
 
-function chiudi_info(overlay) {
+function chiudi_popup(overlay=false) {
     $('.popup').css("opacity","0");
     setTimeout(function() {
         $('.overlay').html("");
