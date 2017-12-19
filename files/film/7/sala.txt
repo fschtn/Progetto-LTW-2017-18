@@ -2,11 +2,11 @@
 ---ooxxxooo---
 ---oooooooo---
 --oooooooooo--
---ooxxxxoooo--
+--ooxxoooooo--
 --oooooxxooo--
 --oooooooooo--
--ooooxxxxoooo-
+-ooooxxoooooo-
 -ooxxxoooxxoo-
 -oooooooooooo-
--ooooooxxxxoo-
+-ooooooxxoooo-
 -ooooxxoooooo-

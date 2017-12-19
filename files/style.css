@@ -131,6 +131,7 @@ main .locandina a {
 .button.deny {
     background: #c32727;
 }
+
 .popup {
     background: url(img/orange.jpg) no-repeat center center;
     position: fixed;
@@ -175,6 +176,46 @@ main .locandina a {
     overflow-y: scroll;
 }
 
+.overlay.green {
+    background-color: rgba(0,255,0,0.7);
+}
+
+.overlay.red {
+    background-color: rgba(255,0,0,0.7);
+}
+
+.overlay > a.chiudi_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 101;
+    cursor: default;
+}
+
+.overlay > span {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 25px;
+    transition: all .5s ease;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
+}
+
+.overlay > span b {
+    display: block;
+    width: 100%;
+    font-size: 50px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
 
 
 /********** PAGINA "INFORMAZIONI" **********/
@@ -192,8 +233,9 @@ main .locandina a {
     float: left;
     position: relative;
     top: -5vh;
-    left: 0;
-    box-shadow: 2px 4px 8px rgba(0,0,0,0.7);
+    left: -1px;
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 4px;
 }
 
@@ -388,10 +430,16 @@ main .locandina a {
 
 #riepilogo .copertina{
     background-position: center center;
-    width : 100%;
-    height: 20vh;
+    width: 110%;
+    height: 22vh;
     background-size: cover;
     background-repeat: no-repeat;
+    position: relative;
+    left: -5%;
+    top: -2vh;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 6px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.4);
 }
 
 #riepilogo h1{
@@ -447,6 +495,142 @@ main .locandina a {
 
 
 
+/**********************CINEMA**********************/
+
+#pannello {
+    position:fixed;
+    width: 30vw;
+    height: 100%;
+    top: 0;
+    left: 130vw;
+    z-index: 1000;
+    background-image: url(img/orange.jpg);
+    background-size: cover;
+    background-position: center center;
+    overflow-y: scroll;
+    transition: all .7s ease;
+}
+
+#pannello::before {
+    content: '';
+    width: 100%;
+    height: 60px;
+    margin: 35px 0;
+    display: inline-block;
+    background-image: url(/img/logo.png);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#pannello > div {
+    position: relative;
+    width: 80%;
+    margin: 0 10%;
+    padding: 25px 25px 0;
+    border-top: 2px solid rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+#pannello > div:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+#pannello > div.open:hover {
+    background-color: rgba(0,0,0,0.0);
+}
+
+#pannello > div::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    display: inline-block;
+    width: 28px;
+    height: 25px;
+    transform: rotateZ(0deg);
+    background-image: url(img/freccia.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: all .4s ease;
+}
+
+#pannello > div.open::before {
+    transform: rotateZ(180deg);
+}
+
+#pannello > div h2 {
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #222;
+    margin: 0 0 25px;
+}
+
+#pannello > div div {
+    height: 0px;
+    overflow: hidden;
+    color: #222;
+    transition: all .4s ease;
+    overflow-y: scroll;
+}
+
+#pannello > div.open div {
+    height: 43vh;
+}
+
+#pannello > div div .b {
+    text-transform: uppercase;
+}
+
+#pannello .location {
+    display: inline-block;
+    padding-left: 40px;
+    background-image: url(img/location.png);
+    background-position: center left;
+    background-repeat: no-repeat;
+    background-size: 30px auto;
+}
+
+#pannello .tel::before, #pannello a.mail::before, #pannello .ticket::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    vertical-align: middle;
+    background-image: url(img/tel.png);
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+#pannello li {
+    margin-bottom: 10px;
+}
+
+#pannello .ticket::after {
+    background-image: url(img/ticket.png);
+    margin: 0 0 0 10px;
+}
+
+#pannello a {
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+
+#pannello a.mail::before {
+    background-image: url(img/email.png);
+}
+
+
+
+
+
 
 /********** MEDIA QUERIES PER ADATTAMENTO ALLO SCHERMO **********/
 
@@ -477,115 +661,4 @@ main .locandina a {
         width: 31vw;
         height: 44vw;
     }
-}
-
-
-
-
-/**********************CINEMA**********************/
-
-.datiUtili{
-  width:60vh;
-  height: 100%;
-  top:0vh;
-  right:0vh;
-  background-color: black;
-  opacity: 0.5;
-  margin-right: 0vh;
-  position:absolute;
-}
-
-.CinemaRoma{
-  width:60vh;
-  height: 34vh;
-  top:0vh;
-  right:0vh;
-  position: relative;
-}
-
-.infoCimema {
-  position: relative;
-}
-
-.contatti{
-  position: relative;
-}
-
-.offerte{
-  position: relative;
-}
-
-#paneldate h1{
-  color:orange;
-  font-family: 'Ubuntu', sans-serif;
-  margin-left: 5vh;
-}
-
-#paneldate h2{
-  font-family: fantasy;
-  color:orange;
-  font-size: 20px;
-  margin-left: 5vh;
-  display: inline-block;
-}
-
-hr{
-  margin-left: 5vh;
-  margin-right: 5vh;
-}
-
-#paneldate img{
-  position: absolute;
-  top: 29px;
-  right: 8vh;
-  background-size: cover;
-  width: 28px;
-  height: 25px;
-
-}
-
-#paneldate #trama,#contacts,#offers{
-  margin-left: 5vh;
-  font-size: 12px;
-  line-height: 1.6;
-  max-width: 50vh;
-  overflow-y: scroll;
-  overflow-x:hidden;
-  display: block;
-  border-top: 6px solid rgba(0,0,0,0.2);
-  border-bottom: 4px solid rgba(0,0,0,0.2);
-  color: white;
-  position: relative;
-  top:0px;
-  height: 0px;
-  transition: all .4s ease;
-}
-
-
-#trama #location,#contacts #tel{
-  width: 28px;
-  height: 25px;
-  position: absolute;
-  background-size: cover;
-  top:1vh;
-  left:0vh;
-  background-color: orange;
-}
-
-
-#contacts #email{
-  width: 28px;
-  height: 25px;
-  position: relative;
-  background-size: cover;
-  top:5vh;
-  left:0vh;
-  background-color: orange;
-}
-
-#offers #ticket{
-  width: 32px;
-  height: 30px;
-  top:2vh;
-  left:10vh;
 }

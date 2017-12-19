@@ -1,12 +1,12 @@
 ---ooooooox---
----ooxxxooo---
+---oooooooo---
 ---oooooooo---
 --oooooooooo--
---ooxxxxoooo--
+--ooxxoooooo--
 --oooooxxooo--
 --oooooooooo--
--ooooxxxxoooo-
--ooxxxoooxxoo-
+-ooooooxxoooo-
+-ooooooooxxoo-
 -oooooooooooo-
--ooooooxxxxoo-
+-ooooooooxxoo-
 -ooooxxoooooo-
