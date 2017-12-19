@@ -452,3 +452,114 @@ main .locandina .info .sala {
         height: 44vw;
     }
 }
+
+
+
+
+/**********************CINEMA**********************/
+
+.datiUtili{
+  width:60vh;
+  height: 100%;
+  top:0vh;
+  right:0vh;
+  background-color: black;
+  opacity: 0.5;
+  margin-right: 0vh;
+  position:absolute;
+}
+
+.CinemaRoma{
+  width:60vh;
+  height: 34vh;
+  top:0vh;
+  right:0vh;
+  position: relative;
+}
+
+.infoCimema {
+  position: relative;
+}
+
+.contatti{
+  position: relative;
+}
+
+.offerte{
+  position: relative;
+}
+
+#paneldate h1{
+  color:orange;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 5vh;
+}
+
+#paneldate h2{
+  font-family: fantasy;
+  color:orange;
+  font-size: 20px;
+  margin-left: 5vh;
+  display: inline-block;
+}
+
+hr{
+  margin-left: 5vh;
+  margin-right: 5vh;
+}
+
+#paneldate img{
+  position: absolute;
+  top: 29px;
+  right: 8vh;
+  background-size: cover;
+  width: 28px;
+  height: 25px;
+
+}
+
+#paneldate #trama,#contacts,#offers{
+  margin-left: 5vh;
+  font-size: 12px;
+  line-height: 1.6;
+  max-width: 50vh;
+  overflow-y: scroll;
+  overflow-x:hidden;
+  display: block;
+  border-top: 6px solid rgba(0,0,0,0.2);
+  border-bottom: 4px solid rgba(0,0,0,0.2);
+  color: white;
+  position: relative;
+  top:0px;
+  height: 0px;
+  transition: all .4s ease;
+}
+
+
+#trama #location,#contacts #tel{
+  width: 28px;
+  height: 25px;
+  position: absolute;
+  background-size: cover;
+  top:1vh;
+  left:0vh;
+  background-color: orange;
+}
+
+
+#contacts #email{
+  width: 28px;
+  height: 25px;
+  position: relative;
+  background-size: cover;
+  top:5vh;
+  left:0vh;
+  background-color: orange;
+}
+
+#offers #ticket{
+  width: 32px;
+  height: 30px;
+  top:2vh;
+  left:10vh;
+}

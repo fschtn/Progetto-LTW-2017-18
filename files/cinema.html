@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title> Il Cinema</title>
+      <link href="style.css" rel="stylesheet" type="text/css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script>
+
+        /*-----------------------------------*/
+        $(document).ready(function(){
+          $("#freccia1").click(function() {
+              $("#trama").height("43vh");
+              $("#contacts").height("0px");
+              $("#offers").height("0px");
+            });
+        });
+
+        $(document).ready(function(){
+          $("#freccia1").click(function() {
+              if($("#trama").height() > 0){
+                $("#trama").height("0px");
+              }
+            });
+        });
+
+        /*---------------------------------*/
+        $(document).ready(function(){
+          $("#freccia2").click(function(){
+            $("#trama").height("0px");
+            $("#contacts").height("43vh");
+            $("#offers").height("0px");
+          });
+        });
+
+        $(document).ready(function(){
+          $("#freccia2").click(function(){
+            if($("#contacts").height() > 0){
+              $("#contacts").height("0px");
+            }
+          });
+        });
+
+        /*-------------------------------*/
+        $(document).ready(function(){
+          $("#freccia3").click(function(){
+            $("#trama").height("0px");
+            $("#contacts").height("0px");
+            $("#offers").height("43vh");
+          });
+        });
+
+        $(document).ready(function(){
+          $("#freccia3").click(function(){
+            if($("#offers").height() > 0){
+              $("#offers").height("0px");
+            }
+          });
+        });
+
+      </script>
+    </head>
+    <body>
+      <div class="datiUtili" id="paneldate">
+        <h1>ROMA</h1>
+        <div class="CinemaRoma">
+            <div class="infoCimema">
+              <hr>
+              <h2>INFO CINEMA</h2>
+              <img src="img/freccia.png" id="freccia1" />
+              <div id="trama">
+                <img src="img/location.png" id="location"/>
+                <pre>     "Viale Giochi del Mediterraeno"</pre></br></br>
+                "Roma"</br>
+                "00187"</br></br>
+                <span>
+                  E’ presente una ricca area dedicata alla ristorazione, dove i frequentatori del The Space potranno trovare soft drinks, caffetteria, popcorn, caramelle pic ‘n’ mix e molto altro.</br></br></br>
+                  Non è consentito l'ingresso in sala ad animali.
+                </span>
+                <p>NUMERO SALE - <strong>11</strong></p>
+                <p>NUMERO POLTRONE - <strong>2760</strong></p>
+                <p>POSTI PER PERSONE DISABILI - <strong>26</strong></p>
+                <p>POSTI VIP - <strong>43</strong></p>
+                <p>POSTI PARCHEGGIO - <strong>22</strong></p>
+              </div>
+            <div class="contatti">
+              <hr>
+              <h2>CONTATTI</h2>
+              <img src="img/freccia.png" id="freccia2" />
+              <div id="contacts">
+                  <p>
+                    <img src="img/tel.png" id="tel"/>
+                    <pre>     <b>8239882</b></pre>
+                    <span>Acquisto via call center: il servizio è attivo dalle 10 alle 21. Al costo di 0,96€ al minuto. Dai mobile della 3: 1.80€ al minuto. Scatto alla risposta massimo 0,15€.</span>
+                  </p>
+                  <p>
+                    <img src="img/email.png" id="email"/>
+                    <pre>     <b>cinemamarvel@gmail.com</b></pre>
+                    <span>L'email verranno lette nel giro di un paio di giorni</span>
+                  </p>
+              </div>
+            </div>
+            <div class="offerte">
+              <hr>
+              <h2>OFFERTE</h2>
+              <img src="img/freccia.png" id="freccia3" />
+              <div id="offers">
+                Le migliori offerte attualmente disponibili valide fino al <b>04/03/18</b>:
+                <img src="img/ticket.png" id="ticket" />
+                <p>- Ordinando 8 biglietti , 1 sarà in <b>omaggio</b>!!;</p>
+                <p>- Siete studenti universitari?! Per voi <b>5&euro;</b> per qualunque film;</p>
+                <p>- Preordina biglietto entro il 23/2/18 e otterrai <b>sconti del 25%</b>.</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </body>
+</html>
