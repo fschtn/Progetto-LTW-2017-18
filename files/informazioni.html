@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Informazioni</title>
+        <title>Informazioni film</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="jquery.js"></script>
+        <script src="script.js"></script>
         <script>
             $(document).ready(function() {
+                mostra_popup();
+                id = localStorage.film != null ? localStorage.film : 1;
+                $('#informazioni > img').attr("src", "film/"+id+"/locandina.jpg");
+                $('#informazioni .info h1').load("film/"+id+"/titolo.txt");
+                $('#informazioni .info h2 .genere').load("film/"+id+"/genere.txt");
+                $('#informazioni .info h2 .durata').load("film/"+id+"/durata.txt");
+                $('#informazioni .info h2 .valutazione').load("film/"+id+"/valutazione.txt");
+                $('#informazioni .info #trama').load("film/"+id+"/trama.txt");
                 $('.prenotazione #hour').change(function() {
                     attiva_prenotazione();
                 });
@@ -13,10 +22,14 @@
                     attiva_prenotazione();
                 });
                 setInterval(function() {
-                    aggiorna_larghezza_massima();
-                    aggiorna_altezza_massima();
+                    if($('#informazioni').length) {
+                        aggiorna_larghezza_massima();
+                        aggiorna_altezza_massima();
+                    }
                 }, 50);
+                genera_date();
             });
+
             function aggiorna_larghezza_massima() {
                 w_popup = $('#informazioni').width();
                 w_img = $('#informazioni > img').width();
@@ -25,6 +38,7 @@
                 w = w_popup-w_img-(p_info*2);
                 $('#trama').css('max-width', w+'px');
             }
+
             function aggiorna_altezza_massima() {
                 h_popup = $('#informazioni').height();
                 h = h_popup-60-50-$('#informazioni .info > span').height();
@@ -35,6 +49,7 @@
                     $('#trama').css({'border-top': '0px', 'border-bottom': '0px'});
                 }
             }
+
             function attiva_prenotazione(){
                 var giorno = $('.prenotazione #day').val();
                 var ora = $('.prenotazione #hour').val();
@@ -42,43 +57,56 @@
                     $('.prenotazione input[type="submit"]').removeAttr("disabled");
                 }
             }
+
+            function genera_date() {
+                mese = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+                d = new Date();
+                for(i=0;i<7;i++) {
+                    d = new Date(d.getTime()+1000*60*60*24);
+                    g = d.getDate();
+                    m = d.getMonth();
+                    a = d.getFullYear();
+                    $('#informazioni form #day').append('<option value="'+a+''+(m+1)+''+g+'">'+g+' '+mese[m]+' '+a+'</option>');
+                }
+            }
+
+            function prenota() {
+                localStorage.giorno = $('#day').val();
+                localStorage.ora = $('#hour').val();
+                chiudi_popup();
+                setTimeout(function() {
+                    apri('posti');
+                }, 410);
+                return false;
+            }
         </script>
     </head>
     <body>
         <div class="popup" id="informazioni">
-            <a href="index.html" class="close"></a>
-            <img src="film/1/locandina.jpg" />
+            <a href="javascript:chiudi_popup(1);" class="close"></a>
+            <img src="" />
             <div class="info">
                 <span style="display: block;">
-                    <h1>Thor Ragnarok</h1>
+                    <h1></h1>
                     <h2>
-                        <span class="genere">Azione</span>
-                        <span class="durata">121'</span>
-                        <span class="valutazione">3.5</span>
+                        <span class="genere"></span>
+                        <span class="durata"></span>
+                        <span class="valutazione"></span>
                     </h2>
                 </span>
-                <span id="trama">
-                    Mosso dalla ritrovata fede nel genere umano e ispirato dalle gesta altruistiche di Superman, Bruce Wayne chiede l'aiuto dell'alleata Diana Prince per affrontare un acerrimo nemico da poco risvegliato. Insieme, Batman e Wonder Woman lavorano alacremente per trovare e reclutare i componenti di una squadra di metaumani. Nonostante la formazione di un team senza precedenti di eroi, potrebbe essere tardi per salvare il pianeta Terra da un attacco di catastrofiche proporzioni.
-                </span>
+                <span id="trama"></span>
             </div>
-            <form action="posti.html" class="prenotazione">
+            <form class="prenotazione" onsubmit="return prenota();">
                 <select id="day">
                     <option selected disabled>Scegli un giorno..</option>
-                    <option value="051217">5 dicembre 2017</option>
-                    <option value="061217">6 dicembre 2017</option>
-                    <option value="071217">7 dicembre 2017</option>
-                    <option value="081217">8 dicembre 2017</option>
-                    <option value="091217">9 dicembre 2017</option>
-                    <option value="101217">10 dicembre 2017</option>
-                    <option value="111217">11 dicembre 2017</option>
                 </select>
                 <select id="hour">
                     <option selected disabled>Scegli un orario..</option>
-                    <option value="16:00">16:00</option>
-                    <option value="18:00">18:00</option>
-                    <option value="20:00">20:00</option>
-                    <option value="22:00">22:00</option>
-                    <option value="00:00">00:00</option>
+                    <option>16:30</option>
+                    <option>18:30</option>
+                    <option>20:30</option>
+                    <option>22:30</option>
+                    <option>00:30</option>
                 </select>
                 <input type="submit" value="Prenota" disabled />
             </form>

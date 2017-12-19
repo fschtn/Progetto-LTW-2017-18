@@ -1,16 +1,43 @@
 <!DOCTYPE html>
 <head>
-    <title> Riepilogo </title>
+    <title>Riepilogo prenotazione</title>
     <meta charset="utf-8" />
     <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="jquery.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $(document).ready(function() {
+            prezzo_biglietto = 6;
+            n_biglietti = JSON.parse(localStorage.prenotazione).length;
+            bigliettoi = n_biglietti == 1 ? "o" : "i";
+            prezzo_totale = prezzo_biglietto*n_biglietti;
+            $('.copertina').css("background-image","url(film/"+localStorage.film+"/promo.jpg)");
+            $('.r-titolo').load("film/"+localStorage.film+"/titolo.txt");
+            $('.r-data').html(converti_giorno(localStorage.giorno));
+            $('.r-ora').html(localStorage.ora);
+            $('.n_biglietti').html(n_biglietti);
+            $('.bigliettoi').html(bigliettoi);
+            $('.prezzo_biglietto').html(prezzo_biglietto);
+            $('.prezzo_totale').html(prezzo_totale);
+            mostra_popup();
+        });
+
+        function converti_giorno(time) {
+            mese = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+            g = time.substring(6,8);
+            m = mese[time.substring(4,6)-1];
+            a = time.substring(0,4);
+            return g+" "+m+" "+a;
+        }
+    </script>
 </head>
 <body>
     <div class="popup small" id="riepilogo">
-        <a href="posti.html" class="light close" ></a>
-        <div class="copertina" style="background-image:url(film/1/Promo.jpg);"></div>
-        <h1>Thor: Ragnarok</h1>
+        <a href="javascript:chiudi_popup();apri('posti',400);" class="light close"></a>
+        <div class="copertina"></div>
+        <h1 class="r-titolo"></h1>
         <span>
-            Confermi di voler acquistare 4 biglietti per lo spettacolo di "Thor: Ragnarok" del 18 dicembre 2017 alle ore 20:00?
+            Confermi di voler acquistare <span class="n_biglietti"></span> bigliett<span class="bigliettoi"></span> per lo spettacolo di "<span class="r-titolo"></span>" del <span class="r-data"></span> alle ore <span class="r-ora"></span>?
         </span>
         <table>
             <tr>
@@ -18,7 +45,7 @@
                     Prezzo biglietto singolo
                 </td>
                 <td>
-                    6.00€
+                    <span class="prezzo_biglietto"></span>.00€
                 </td>
             </tr>
             <tr>
@@ -26,7 +53,7 @@
                     Num. biglietti
                 </td>
                 <td>
-                    x4
+                    x<span class="n_biglietti"></span>
                 </td>
             </tr>
             <tr>
@@ -34,7 +61,7 @@
                     Totale
                 </td>
                 <td>
-                    24.00€
+                    <span class="prezzo_totale"></span>.00€
                 </td>
             </tr>
         </table>

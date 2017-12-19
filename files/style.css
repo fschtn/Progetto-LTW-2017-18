@@ -14,6 +14,10 @@ body {
     padding: 50px 0px 100px;
 }
 
+a {
+    cursor: pointer;
+}
+
 header {
     padding: 15px 0px;
     margin: 0px 0px 50px;
@@ -63,6 +67,7 @@ header nav a:nth-child(n+2):hover {
 
 header nav, main, .popup {
     width: 72vw;
+    margin-left: -36vw;
 }
 
 .popup.small {
@@ -73,10 +78,6 @@ header nav, main, .popup {
 header nav, main {
     position: relative;
     margin: 0 auto;
-}
-
-.popup {
-    margin-left: -36vw;
 }
 
 main {
@@ -105,23 +106,9 @@ main .locandina a {
     height: 100%;
     background-color: rgba(150,200,80,0);
     position: absolute;
+    cursor: pointer;
     top:0;
     left:0;
-}
-
-main .locandina .info {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    height: 40px;
-    line-height: 1;
-}
-
-main .locandina .info .sala {
-    position: absolute;
-    bottom: 0px;
-    right:0;
 }
 
 .button {
@@ -144,13 +131,6 @@ main .locandina .info .sala {
 .button.deny {
     background: #c32727;
 }
-
-
-
-/********** PAGINA "INFORMAZIONI" **********/
-
-
-
 .popup {
     background: url(img/orange.jpg) no-repeat center center;
     position: fixed;
@@ -162,6 +142,9 @@ main .locandina .info .sala {
     border-radius: 3px;
     margin-top: 15vh;
     margin-bottom: 15vh;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity .3s ease;
 }
 
 .popup > .close {
@@ -180,6 +163,25 @@ main .locandina .info .sala {
     background-image: url(img/light_cross.png);
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: rgba(0,0,0,0.0);
+    transition: all .3s ease;
+    overflow-y: scroll;
+}
+
+
+
+/********** PAGINA "INFORMAZIONI" **********/
+
+
+
+
 #informazioni {
     white-space: nowrap;
 }
@@ -192,12 +194,7 @@ main .locandina .info .sala {
     top: -5vh;
     left: 0;
     box-shadow: 2px 4px 8px rgba(0,0,0,0.7);
-    transition: top .6s ease;
     border-radius: 4px;
-}
-
-#informazioni img:hover {
-    top: -6.5vh;
 }
 
 #informazioni .info {
@@ -217,6 +214,34 @@ main .locandina .info .sala {
     font-size: 20px;
     color: rgba(0,0,0,0.7);
     margin: 10px 0 20px;
+}
+
+#informazioni h2 .genere::before, #informazioni h2 .durata::before, #informazioni h2 .valutazione::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 6px 0 30px;
+}
+
+#informazioni h2 .genere::before {
+    background-image: url('img/film.svg');
+    margin-left: 0;
+}
+
+#informazioni h2 .durata::before {
+    background-image: url('img/clock.svg');
+}
+
+#informazioni h2 .durata::after {
+    content: "'";
+}
+
+#informazioni h2 .valutazione::before {
+    background-image: url('img/star.svg');
 }
 
 #informazioni #trama {
@@ -346,6 +371,7 @@ main .locandina .info .sala {
     border-bottom: 1px solid rgba(255,255,255,0.2);
     box-shadow: 1px 2px 4px rgba(0,0,0,0.5);
     transition: all .4s ease;
+    z-index: 1001;
 }
 
 #conferma_prenotazione.visibile {
@@ -374,7 +400,7 @@ main .locandina .info .sala {
     padding: 0 20px;
 }
 
-#riepilogo span{
+#riepilogo > span{
     font-size: 18px;
     padding: 0 20px;
     display: inline-block;
