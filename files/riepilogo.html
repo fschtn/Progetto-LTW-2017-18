@@ -40,6 +40,7 @@
         function acquisto(confermato) {
             colore_sfondo = confermato ? "rgba(39,174,96,0.8)" : "rgba(44,62,80,0.8)";
             testo = confermato ? "<span><b>Acquisto confermato</b>Grazie per aver acquistato da noi, ci vediamo in sala! 😜</span>" : "<span><b>Acquisto annullato</b>Speriamo di rivederti presto, buon proseguimento! 👋🏻</span>";
+            emoji = confermato ? '👍🏻' : '😢';
             $('.overlay').css("background-color",colore_sfondo);
             chiudi_popup();
             setTimeout(function(){
@@ -47,6 +48,7 @@
                 setTimeout(function(){
                     $('.overlay span').css("margin-top", "-"+(($('.overlay span').height())/2)+"px");
                     $('.overlay span').css("top", "50%");
+                    flow_animate(emoji);
                     setTimeout(function(){
                         $('.overlay span').css("top", "-100vh");
                         chiudi_overlay(100);

@@ -216,6 +216,13 @@ main .locandina a {
     margin-bottom: 15px;
 }
 
+.emoji{
+    position:absolute;
+    top:100%;
+    transition:all 2.5s ease-in;
+    z-index:999999999999;
+}
+
 
 
 /********** PAGINA "INFORMAZIONI" **********/

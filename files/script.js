@@ -52,7 +52,7 @@ function chiudi_overlay(timeout=1) {
 function crea_link_chiusura() {
     $('.overlay').html('<a class="chiudi_overlay"></a>');
     $('.overlay a').bind("click", function() {
-        $('#pannello').css("left", "130vw");
+        $('#pannello').css("left", "100vw");
         chiudi_overlay(50);
     });
 }
@@ -66,4 +66,21 @@ function panel(what) {
             $('#pannello').css("left", "70vw");
         }, 50);
     });
+}
+
+function flow_animate(emoji) {
+    num_emoji=50;
+    for(i=0;i<=num_emoji;i++) {
+        fs = Math.random()*100;
+        lp = Math.random()*100;
+        span='<b class="emoji" style="left:'+lp+'%;font-size:'+fs+'px;" id="emoji-'+i+'">'+emoji+"</b>";
+        $('.overlay').append(span);
+    }
+    j=0;
+    setInterval(function(){
+        if(j<=num_emoji) {
+            $('#emoji-'+j).css("top","-200px");
+        }
+        j++;
+    },(10+Math.random()*20));
 }

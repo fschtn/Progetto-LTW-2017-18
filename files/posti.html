@@ -29,7 +29,7 @@
                 alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
                 $.get("film/"+localStorage.film+"/sala.txt", function(data) {
                     file = data.split("\n");
-                    for(i=0;i<file.length-1;i++) {
+                    for(i=0;i<file.length;i++) {
                         $("#sala").append("<tr>");
                         fila = file[i];
                         for(j=0;j<fila.length;j++) {
@@ -53,7 +53,6 @@
 
             function toggle_acquista() {
                 $('#conferma_prenotazione').bind("click", function() {
-                    $('#conferma_prenotazione').removeClass("visibile");
                     var prenotazione = new Array();
                     $('td.selected').each(function(e) {
                         prenotazione.push($(this).attr("id"));
@@ -82,7 +81,6 @@
                 prenotazioni = localStorage.prenotazione;
                 prenota = JSON.parse(prenotazioni);
                 for(e in prenota) {
-                    // console.log(prenota[e]);
                     $('#'+prenota[e]).addClass("selected");
                 }
             }
